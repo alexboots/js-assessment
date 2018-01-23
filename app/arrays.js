@@ -99,7 +99,18 @@ exports.arraysAnswers = {
   },
 
   duplicates: function(arr) {
+    let duplicates = []
+    let testArray = arr.slice()
+    // remove element from cloned array, check to see if there is another instanec of it in the cloned array, and if there is, 
+    // and it is not already in duplicates list, add it
+    for(let element of arr) {
+      testArray.splice(testArray.indexOf(element), 1)
+      if(testArray.indexOf(element) !== -1 && duplicates.indexOf(element) === -1) {
+        duplicates.push(element)
+      }
+    }
 
+    return duplicates
   },
 
   square: function(arr) {
@@ -111,6 +122,15 @@ exports.arraysAnswers = {
   },
 
   findAllOccurrences: function(arr, target) {
+    let occurrences = []
 
+    // 1)
+    arr.forEach((element, index) => {
+      if(element === target) {
+        occurrences.push(index)
+      }
+    })
+
+    return occurrences
   }
 };
